@@ -48,7 +48,6 @@ for (i in seq(1,length(forVariables),by=1)) {
 }
 @
 \section{Popisná statistika}
-
 <<myFncs,echo=FALSE>>=
 getmode <- function(v) {
    uniqv <- unique(v)
@@ -131,9 +130,7 @@ print(xtable(myMatrix,
 @
 \clearpage
 \section{Základní grafy}
-
 \subsection{Histogram}
-
 \begin{figure}[H]
 \centering
 <<histogram_max, echo=FALSE,results=hide>>=
@@ -143,10 +140,7 @@ hist(pomocnaMax, main = paste("Histogram pro hodnoty měny", curencies[columnMax
 invisible(dev.off())
 @
 \includegraphics[width=10cm]{histogram_max.pdf}
-\caption{Histogram měny s maximální hodnotou šikomosti}
-\end{figure}
-\begin{figure}[H]
-\centering
+\caption{Histogram měny s maximální hodnotou šikmosti}
 <<histogram_min, echo=FALSE,results=hide>>=
 pomocnaMin=eval(as.name(paste(curencies[columnMinSkewness],sep ="_", "vector")))
 CairoPDF("histogram_min.pdf")
@@ -154,10 +148,9 @@ print(hist(pomocnaMin, main = paste("Histogram pro hodnoty měny", curencies[col
 invisible(dev.off())
 @
 \includegraphics[width=10cm]{histogram_min.pdf}
-\caption{Histogram měny s minimální hodnotou šikomosti}
+\caption{Histogram měny s minimální hodnotou šikmosti}
 \end{figure}
 \subsection{Boxplot}
-
 \begin{figure}[H]
 \centering
 <<boxplot_graf, echo=FALSE,results=hide>>=
@@ -170,7 +163,6 @@ boxplot(pomocnaBox1,pomocnaBox2, main = paste("Boxplot pro srovnání kvartilů 
 \caption{Boxplot graf pro první dvě měny}
 \end{figure}
 \subsection{Bodový graf}
-
 \begin{figure}[H]
 \centering
 <<bodovy_max, echo=FALSE,results=hide>>=
@@ -178,19 +170,15 @@ CairoPDF("bodovy_max.pdf")
 plot(pomocnaMax, main = paste("Bodový graf vývoje ceny v čase pro hodnoty měny", curencies[columnMaxSkewness]),ylab= "Vývoj ceny", xlab="Uplynulé dny dostupných kurzů")
 @
 \includegraphics[width=10cm]{bodovy_max.pdf}
-\caption{Bodový graf měny s maximální hodnotou šikomosti}
-\end{figure}
-\begin{figure}[H]
-\centering
+\caption{Bodový graf měny s maximální hodnotou šikmosti}
 <<bodovy_min, echo=FALSE,results=hide>>=
 CairoPDF("bodovy_min.pdf")
 plot(pomocnaMin, main = paste("Bodový graf vývoje ceny v čase pro hodnoty měny", curencies[columnMinSkewness]), ylab= "Vývoj ceny",xlab="Uplynulé dny dostupných kurzů")
 @
 \includegraphics[width=10cm]{bodovy_min.pdf}
-\caption{Bodový graf měny s minimální hodnotou šikomosti}
+\caption{Bodový graf měny s minimální hodnotou šikmosti}
 \end{figure}
 \subsection{Hexbin}
-
 \begin{figure}[H]
 \centering
 <<hexbin_graf_max, echo=FALSE,results=hide>>=
@@ -201,7 +189,7 @@ CairoPDF("hexbin_graf_max.pdf")
 hexbinplot(y ~ x, dataHexbinF, colramp=rf, main=paste("Graf kurzů, které jsou stejné pro měnu ", curencies[columnMaxSkewness]), xlab="Cena vůči koruně", ylab="")
 @
 \includegraphics[width=10cm]{hexbin_graf_max.pdf}
-\caption{Hexbin graf měny s maximální hodnotou šikomosti}
+\caption{Hexbin graf měny s maximální hodnotou šikmosti}
 \centering
 <<hexbin_graf_min, echo=FALSE,results=hide>>=
 pomocnaHexMin=as.name(paste(curencies[columnMinSkewness],sep ="_", "vector"))
@@ -211,10 +199,9 @@ CairoPDF("hexbin_graf_min.pdf")
 hexbinplot(y ~ x, dataHexbinF, colramp=rf, main=paste("Graf kurzů, které jsou stejné pro měnu ", curencies[columnMinSkewness]), xlab="Cena vůči koruně", ylab="")
 @
 \includegraphics[width=10cm]{hexbin_graf_min.pdf}
-\caption{Hexbin graf měny s minimální hodnotou šikomosti}
+\caption{Hexbin graf měny s minimální hodnotou šikmosti}
 \end{figure}
 \subsection{3D graf}
-
 \begin{figure}[H]
 \centering
 <<3D_graf_max, echo=FALSE,results=hide>>=
@@ -226,7 +213,7 @@ scatterplot3d(x, y, z, highlight.3d=TRUE, col.axis="blue",
 col.grid="lightblue", main=paste("Vývoj ceny",curencies[columnMaxSkewness]), pch=20,xlab="",ylab="",zlab="Cena vůči koruně")
 @
 \includegraphics[width=10cm]{3D_graf_max.pdf}
-\caption{3D graf graf měny s maximální hodnotou šikomosti}
+\caption{3D graf graf měny s maximální hodnotou šikmosti}
 \end{figure}
 \begin{figure}[H]
 \centering
@@ -239,10 +226,9 @@ scatterplot3d(x, y, z, highlight.3d=TRUE, col.axis="blue",
 col.grid="lightblue", main=paste("Vývoj ceny",curencies[columnMinSkewness]), pch=20,xlab="",ylab="",zlab="Cena vůči koruně")
 @
 \includegraphics[width=10cm]{3D_graf_min.pdf}
-\caption{3D graf graf měny s minimální hodnotou šikomosti}
+\caption{3D graf graf měny s minimální hodnotou šikmosti}
 \end{figure}
 \subsection{Chernoff faces}
- 
 \begin{figure}[H]
 \centering
 <<faces_graf, echo=FALSE>>=
@@ -254,9 +240,7 @@ faces(myMatrix[,1:10])
 \end{figure}
 \clearpage
 \section{Korelace}
-
 \subsection{Korelační matice}
-  
 \begin{table}[H]
 <<cor_matice, echo=FALSE>>=
 corMatice<-cor(maticeMen)
@@ -285,7 +269,6 @@ print(corMatice)
 \caption{Korelační matice}
 \end{table}
 \subsection{Bodové grafy hodnot z korelační matice}
-
 \begin{figure}[H]
 \centering
 <<cor_max, echo=FALSE,results=hide>>=
@@ -329,6 +312,31 @@ chisq.test(smoke.freq,p=smoke.prob)
 chisq.test(kontTab)
 chisq.test(kontTabSpojena)
 @
+\section{Lineární regrese}
+\begin{figure}[H]
+<<lregreseCount, echo=FALSE,results=hide>>=
+lRegreseCur1Val = eval(as.name(paste(curencies[iCorMaxValue],sep ="_", "vector")))
+lRegreseCur2Val = eval(as.name(paste(curencies[jCorMaxValue],sep ="_", "vector")))
+DATALregrese <- data.frame("lRegreseCur1" = lRegreseCur1Val, "lRegreseCur2" = lRegreseCur2Val)
+lregrese <- lm(DATALregrese$lRegreseCur2~DATALregrese$lRegreseCur1)
+predicate_int <- predict(lregrese, interval = "prediction", level=0.95)
+pass_reliability <- predict(lregrese, interval = "confidence", level = 0.95)
+@
+<<lregreseText, echo=FALSE>>=
+lregrese
+summary(lregrese)
+@
+<<lregresePlot, echo=FALSE,results=hide>>=
+CairoPDF("lregresePlot.pdf")
+lregrese
+plot(DATALregrese)
+abline(lregrese)
+lines(DATALregrese[,1], pass_reliability[,2], type = "l", col="red")
+lines(DATALregrese[,1], pass_reliability[,3], type = "l", col="green")
+@
+\includegraphics[width=10cm]{lregresePlot.pdf}
+\caption{Graf lineární regrese}
+\end{figure}
 \clearpage
 \section{Závěr}
 \end{document}
