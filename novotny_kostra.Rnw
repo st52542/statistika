@@ -239,6 +239,24 @@ faces(myMatrix[,1:10])
 \caption{Chernoff faces graf tabulky popisné statistiky}
 \end{figure}
 \clearpage
+\section{Testování statistických hypotéz}
+<<testHypVar, echo=FALSE,results=hide>>=
+TestHypCur1 = eval(as.name(paste(curencies[1],sep ="_", "vector")))
+TestHypCur2 = eval(as.name(paste(curencies[2],sep ="_", "vector")))
+@
+\subsection{Jednovýběrový Studentův test vůči střední hodnotě}
+<<testStrH, echo=FALSE>>=
+t.test(TestHypCur1, mu=20)
+@
+\subsection{Dvouvýběrový Studentův test}
+<<testDvouVyber, echo=FALSE>>=
+t.test(TestHypCur1,TestHypCur2)
+@
+\subsection{Fisherův test}
+<<testFis, echo=FALSE>>=
+var.test(TestHypCur1,TestHypCur2)
+@
+\section{ANOVA}
 \section{Korelace}
 \subsection{Korelační matice}
 \begin{table}[H]
@@ -313,7 +331,6 @@ chisq.test(kontTab)
 chisq.test(kontTabSpojena)
 @
 \section{Lineární regrese}
-\begin{figure}[H]
 <<lregreseCount, echo=FALSE,results=hide>>=
 lRegreseCur1Val = eval(as.name(paste(curencies[iCorMaxValue],sep ="_", "vector")))
 lRegreseCur2Val = eval(as.name(paste(curencies[jCorMaxValue],sep ="_", "vector")))
@@ -326,6 +343,7 @@ pass_reliability <- predict(lregrese, interval = "confidence", level = 0.95)
 lregrese
 summary(lregrese)
 @
+\begin{figure}[H]
 <<lregresePlot, echo=FALSE,results=hide>>=
 CairoPDF("lregresePlot.pdf")
 lregrese
